@@ -36,7 +36,7 @@ const BasicInfoForm = ({
         formData.append("avatar", file);
 
         const response = await axios.post(
-          "http://localhost:3000/api/resume/uploadimage",
+          `${import.meta.env.VITE_BACKEND_URL}/api/resume/uploadimage`,
           formData,
           {
             headers: {

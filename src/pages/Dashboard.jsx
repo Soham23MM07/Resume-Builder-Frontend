@@ -22,13 +22,16 @@ export const Dashboard = ({
     try {
       setError("");
       setLoading(true);
-      const response = await fetch(`http://localhost:3000/api/resume/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/resume/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setLoading(false);
       window.location.reload();
       console.log(response);
@@ -43,13 +46,16 @@ export const Dashboard = ({
       setError("");
       setLoading(true);
 
-      const response = await fetch("http://localhost:3000/api/resume", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/resume`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) throw new Error(`API error: ${response.status}`);
 
@@ -69,13 +75,16 @@ export const Dashboard = ({
     try {
       console.log(id);
 
-      const response = await fetch(`http://localhost:3000/api/resume/${id}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/resume/${id}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const result = await response.json();
 
       console.log(result.data);
