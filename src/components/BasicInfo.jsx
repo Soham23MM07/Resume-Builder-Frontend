@@ -44,11 +44,11 @@ const BasicInfoForm = ({
             },
           }
         );
-        console.log("Data return", response.data.data);
+        console.log("Data return", response.data.imageUrl);
 
         setData((prev) => ({
           ...prev,
-          profileimageurl: response.data.data,
+          profileimageurl: response.data.imageUrl,
         }));
       } catch (err) {
         console.error("Upload failed:", err);
