@@ -73,14 +73,17 @@ export const CreateResume = ({
   const handleUpdate = async (id) => {
     const token = await getToken();
     try {
-      const response = await fetch(`http://localhost:3000/api/resume/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/resume/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       console.log(response);
       toast.success("Resume Updated Successfully");
     } catch (error) {
@@ -188,7 +191,7 @@ export const CreateResume = ({
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/resume",
+        `${import.meta.env.VITE_BACKEND_URL}/api/resume`,
         data,
         {
           headers: {
